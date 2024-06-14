@@ -1,21 +1,24 @@
-# Multimodal Multi-hop Retrieval Augmented Generation
-Composable & modular pipeline for Multimodal Retrieval Augmented Generation with citation logic to link to underlying multimodal sources.
+# O-1A Visa Screener
 
 ## Author
 Sravan Jayanthi
 
 ## Demo
-[![Video Demo](https://img.youtube.com/vi/hofZwGcOcGM/0.jpg)](https://www.youtube.com/watch?v=hofZwGcOcGM)
-
-[Architecture Demo](https://www.loom.com/share/d86866bdfef24a91932369d438edf4de?sid=97ff4411-e5dc-4872-b36d-384823a8b69c)
-<!-- <video width="320" height="240" controls>
-  <source src="video/ChatappNarration.mp4" type="video/mp4">
-</video> -->
 
 
 ## Introduction
 
-Multimodal Multi-hop RAG is a powerful and modular framework designed for closed-domain question answerring that supports multiple data modalities with several rounds of information retrieval & reasoning. This repository provides a robust infrastructure to build and deploy models that can retrieve and generate text, images, and other types of data in a cohesive pipeline. This application deonstrates the usage of DSPy & image verbalization with GPT-4o to enable dynamic pipelines for contextual multi-hop question answering over multimodal content.
+This project aims to develop an AI application that can roughly assess how qualified a person is for an O-1A immigration visa based on their curriculum vitae (CV) or resume. The O-1A visa is a non-immigrant visa for individuals with extraordinary ability in the sciences, arts, education, business, or athletics.
+Project Overview
+The O-1A visa has eight criteria defined by the United States Citizenship and Immigration Services (USCIS). This project uses natural language processing (NLP) and large language models (LLMs) to analyze a person's CV and provide an assessment of how well they meet each of the eight criteria.
+The project has the following components:
+
+System Design: A detailed design document outlining the architecture and components of the AI application.
+API Endpoint: A FastAPI endpoint that accepts a CV as input and returns two outputs:
+
+- A score for each of the eight O-1A criteria, indicating how well the person meets that criterion.
+- An overall assessment of the person's qualification for the O-1A visa based on the scores.
+
 
 ## Setup Instructions
 
@@ -61,29 +64,9 @@ Before setting up the project, ensure you have the following installed:
 
 ## Run Application
 
-In `glean/chatapp`, use the command `reflex run`.
-
-It will take a few minutes on the first setup to successfully chunk, verbalizer & serialize the document contents.
-
 To setup the backend service, in a separate shell run `python backend\qa_service.py`
 
-With both services setup, you can visit `http://localhost:3000/` & start submitting queries!
-
-
-### Architecture
-The Multimodal-RAG system follows a client-server architecture to provide efficient and scalable Retrieval Augmented Generation (RAG) for multimodal data.
-
-### Document Ingestion
-The system utilizes the unstructured library for document ingestion. This library allows for the seamless processing and structuring of various document types, enabling the extraction of useful information from unstructured data sources.
-
-### Image Verbalization
-For image data, the system uses GPT-4o for image verbalization. This involves generating descriptive text based on the visual content of images, which is then used in conjunction with other textual data to enhance the retrieval and generation process.
-
-### DSPy: Multi-Hop Question Answering
-For complex queries that require reasoning across multiple pieces of information, the system implements multi-hop question answering. This is achieved using DSPy, which dynamically specifies prompts and optional examples to improve the performance of the program. DSPy enables the system to compile programs that can effectively handle multi-hop reasoning, enhancing the accuracy and relevance of the generated responses.
-
-### Backend & Frontend Services
-The backend is powered by FastAPI & user interface (UI) of the system is built using Reflex. This client-server structure ensures a robust system that can deliver quick responses to user queries.
+With both services setup, you can ping `http://localhost:8001/` & start submitting queries!
 
 
 ### Dependencies
