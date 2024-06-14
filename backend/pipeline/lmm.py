@@ -40,3 +40,12 @@ class OpenAILMM:
     
     def __call__(self, prompt, images):
         return  self.call_lmm(prompt, images)
+    
+    
+    
+def setup_llm(model_name="gpt-4o", **kwargs):
+    if "gpt" in model_name:
+        llm = OpenAILMM(model_name=model_name, **kwargs)
+        return llm
+    else:
+        raise Exception("Model not yet implemented")
